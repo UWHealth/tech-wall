@@ -1,0 +1,68 @@
+@import url("https://use.typekit.net/saq6crj.css");
+
+@import '$lib/_functions.scss';
+
+:root {
+  font-family: 'Proxima Nova', 'proxima-nova';
+  font-size: clamp(5px, calc(5px + #{strip($base - 5px)} * ( (100vw - 250px) / #{strip(1260px - 250px)}) ), #{$base});
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'proxima-nova';
+  font-size: 1rem;
+  color: #4b5155;
+  margin: 0;
+  min-height: 100vh;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+
+@keyframes grow {
+  0% {
+      transform: scale(1);
+  }
+  100% {
+      transform: scale(1.5);
+  }
+}
+
+@keyframes fade {
+  0% {
+      opacity: 0.01;
+  }
+  100% {
+      opacity: 0.1;
+  }
+}
+
+@keyframes grow-return {
+  0% { transform: scale(.99) }
+  5% { transform: scale(1.05) }
+  90% { transform: scale(1.6) }
+}
+
+@keyframes fade-return {
+  0% { opacity: 0 }
+  5% { opacity: 0 }
+  15% { opacity: .5 }
+  50% { opacity: 1 }
+  70% { opacity: 0.4 }
+  90% { opacity: 0 }
+  100% { opacity: 0 }
+}

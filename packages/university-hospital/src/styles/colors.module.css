@@ -1,0 +1,86 @@
+/***************
+ * UW Health Brand Colors v2.0
+ *
+ * Improves accessibility, using a predictable scale where a difference of 50
+ * will always result in a accessible color combination, no matter the color.
+ *
+ ****************/
+:root {
+--color-aqua-01: #dafdff;
+--color-aqua-10: #c0fcff;
+--color-aqua-20: #8bebfb;
+--color-aqua-30: #44c4ef;
+--color-aqua-40: #1392c5;
+--color-aqua-50: #1574ab;
+--color-aqua-60: #096295;
+--color-aqua-70: #123e5c;
+--color-aqua-80: #04273d;
+--color-aqua-90: #02141f;
+
+--color-blue-01: #e6f8fd;
+--color-blue-10: #d0ebfa;
+--color-blue-20: #afd3f4;
+--color-blue-30: #80b6f2;
+--color-blue-40: #3e8dea;
+--color-blue-50: #1c75d6;
+--color-blue-60: #065dba;
+--color-blue-70: #163382;
+--color-blue-80: #06205f;
+--color-blue-90: #070d32;
+
+--color-cherry-01: #fff2f1;
+--color-cherry-10: #ffe5e3;
+--color-cherry-20: #ffc1be;
+--color-cherry-30: #ff7a7c;
+--color-cherry-40: #f62744;
+--color-cherry-50: #da0335;
+--color-cherry-60: #b90b18;
+--color-cherry-70: #790019;
+--color-cherry-80: #510211;
+--color-cherry-90: #270008;
+
+--color-gray-01: #f7fbfc;
+--color-gray-10: #edf5f7;
+--color-gray-20: #d4dbdd;
+--color-gray-30: #b4bdbe;
+--color-gray-40: #858d8f;
+--color-gray-50: #646c70;
+--color-gray-60: #4b5155;
+--color-gray-70: #353b3e;
+--color-gray-80: #202527;
+--color-gray-90: #0b1114;
+
+--color-red-01: #fff8f5;
+--color-red-10: #ffece6;
+--color-red-20: #fec9bf;
+--color-red-30: #fd8a79;
+--color-red-40: #e64132;
+--color-red-50: #c5050c;
+--color-red-60: #a71507;
+--color-red-70: #7c0d05;
+--color-red-80: #461107;
+--color-red-90: #230900;
+
+--color-steel-01: #f6fcfd;
+--color-steel-10: #e2f7fa;
+--color-steel-20: #cbe1e7;
+--color-steel-30: #9fbbc5;
+--color-steel-40: #718e9c;
+--color-steel-50: #5c758a;
+--color-steel-60: #44586e;
+--color-steel-70: #2a394f;
+--color-steel-80: #19243b;
+--color-steel-90: #060a24;
+
+--color-teal-01: #e6fef6;
+--color-teal-10: #c8fdf2;
+--color-teal-20: #89e8dd;
+--color-teal-30: #37c8c0;
+--color-teal-40: #039a96;
+--color-teal-50: #067775;
+--color-teal-60: #135c60;
+--color-teal-70: #144147;
+--color-teal-80: #10292e;
+$color-teal-90: #001318;
+
+}

@@ -1,0 +1,58 @@
+/* ===========================================
+ * Base fonts
+ * ======================================== */
+
+ @font-face {
+  font-family: 'proxima-nova';
+  src: local('Proxima Nova'),
+    url('/fonts/proximanova-700.woff2')
+      format('woff2');
+  font-display: auto;
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'proxima-nova';
+  src: local('Proxima Nova'),
+    url('/fonts/proximanova-700i.woff2') format('woff2');
+  font-display: auto;
+  font-style: italic;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'proxima-nova';
+  src: local('Proxima Nova'),
+    url('/fonts/proximanova-400.woff2') format('woff2');
+  font-display: auto;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'proxima-nova';
+  src: local('Proxima Nova'),
+     url('/fonts/proximanova-400i.woff2') format('woff2');
+  font-display: auto;
+  font-style: italic;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'bennet-banner';
+  src: local('Bennet Banner'),
+    url('/fonts/bennetbanner-900.woff2') format('woff2');
+  font-display: auto;
+  font-style: normal;
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: 'bennet-display';
+  src: local('Bennet Display'),
+    url('/fonts/bennetdisplay-400.woff2') format('woff2');
+  font-display: auto;
+  font-style: normal;
+  font-weight: 400;
+}

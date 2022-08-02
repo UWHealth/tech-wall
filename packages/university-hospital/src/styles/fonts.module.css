@@ -3,56 +3,72 @@
  * ======================================== */
 
  @font-face {
-  font-family: 'proxima-nova';
-  src: local('Proxima Nova'),
-    url('/fonts/proximanova-700.woff2')
-      format('woff2');
-  font-display: auto;
-  font-style: normal;
-  font-weight: 700;
+  font-family:"proxima-nova";
+  src:local("Proxima Nova"),
+    url("/src/assets/fonts/proxima-nova-black.woff2") format("woff2");
+  font-display:block;font-style:normal;font-weight:900;font-stretch:normal;
 }
-
+/** Proxima Nova Bold */
 @font-face {
-  font-family: 'proxima-nova';
-  src: local('Proxima Nova'),
-    url('/fonts/proximanova-700i.woff2') format('woff2');
-  font-display: auto;
-  font-style: italic;
-  font-weight: 700;
+  font-family:"proxima-nova";
+  src:local("Proxima Nova"),
+    url("/src/assets/fonts/proxima-nova-bold.woff2") format("woff2");
+  font-display:block;font-style:normal;font-weight:700;font-stretch:normal;
 }
-
+/** Proxima Nova Bold Italic */
 @font-face {
-  font-family: 'proxima-nova';
-  src: local('Proxima Nova'),
-    url('/fonts/proximanova-400.woff2') format('woff2');
-  font-display: auto;
-  font-style: normal;
-  font-weight: 400;
+  font-family:"proxima-nova";
+  src:local("Proxima Nova"),
+    url("/src/assets/fonts/proxima-bold-italic.woff2") format("woff2");
+  font-display:block;font-style:italic;font-weight:700;font-stretch:normal;
 }
-
+/** Proxima Nova Medium */
 @font-face {
-  font-family: 'proxima-nova';
-  src: local('Proxima Nova'),
-     url('/fonts/proximanova-400i.woff2') format('woff2');
-  font-display: auto;
-  font-style: italic;
-  font-weight: 400;
+  font-family:"proxima-nova";
+  src:local("Proxima Nova"),
+    url("/src/assets/fonts/proxima-nova-medium.woff2") format("woff2");
+  font-display:block;font-style:normal;font-weight:400;font-stretch:normal;
 }
-
+/** Proxima Nova Medium italic */
 @font-face {
-  font-family: 'bennet-banner';
-  src: local('Bennet Banner'),
-    url('/fonts/bennetbanner-900.woff2') format('woff2');
-  font-display: auto;
-  font-style: normal;
-  font-weight: 900;
+  font-family:"proxima-nova";
+  src:local("Proxima Nova"),
+    url("/src/assets/fonts/proxima-nova-medium-italic.woff2") format("woff2");
+  font-display:block;font-style:italic;font-weight:400;font-stretch:normal;
+}
+/** Proxima Nova Light */
+@font-face {
+  font-family:"proxima-nova";
+  src:local("Proxima Nova"),
+    url("/src/assets/fonts/proxima-nova-light.woff2") format("woff2");
+  font-display:block;font-style:normal;font-weight:300;font-stretch:normal;
+}
+/** Proxima Nova Extra condensed Bold */
+@font-face {
+  font-family:"proxima-nova-extra-condensed";
+  src:local("Proxima Nova Extra Condensed"),
+    url("/src/assets/fonts/proxima-nova-extra-condensed-bold.woff2") format("woff2");
+  font-display:block;font-style:normal;font-weight:700;font-stretch:normal;
+}
+/** Proxima Nova Extra condensed Medium */
+@font-face {
+  font-family:"proxima-nova-extra-condensed";
+  src: local("Proxima Nova Extra Condensed"),
+    url("/src/assets/fonts/proxima-nova-extra-condensed-medium.woff2") format("woff2");
+  font-display:block;font-style:normal;font-weight:400;font-stretch:normal;
+}
+/** Bennet Banner Black */
+@font-face {
+  font-family:"bennet-banner";
+  src:local('Bennet Banner'),
+    url("/src/assets/fonts/bennet-banner-black.woff2") format("woff2");
+  font-display:block;font-style:normal;font-weight:900;font-stretch:normal;
 }
 
+/** Bennet Display Medium */
 @font-face {
   font-family: 'bennet-display';
   src: local('Bennet Display'),
-    url('/fonts/bennetdisplay-400.woff2') format('woff2');
-  font-display: auto;
-  font-style: normal;
-  font-weight: 400;
+    url('/src/assets/bennet-display-medium.woff2') format('woff2');
+  font-display: auto; font-style: normal;font-weight: 400;font-stretch:normal;
 }

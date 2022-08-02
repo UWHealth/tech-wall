@@ -1,0 +1,50 @@
+@import './reset.module.css';
+@import '/src/styles/colors.module.css';
+@import '/src/styles/fonts.module.css';
+@import './functions';
+
+:root {
+  --ar-x: 5760;
+  --ar-y: 1360;
+  --aspect-ratio: var(--ar-x)/var(--ar-y);
+  all: initial;
+  box-sizing: border-box;
+  color: var(--color-steel-60);
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+html {
+  overflow: hidden;
+  display: flex;
+  font-size: clamp(2px, calc(2px + #{strip($base - 2px)} * ( (100vw - 250px) / #{strip(5760px - 250px)}) ), #{$base});
+  font-weight: 400;
+  max-height: 100vh;
+  width: 100vw;
+  aspect-ratio: var(--aspect-ratio);
+  flex-direction: column;
+  place-content: center;
+  place-items: center;
+  background-color: black;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  display: grid;
+  font-family: 'proxima-nova';
+  max-width: 5760px;
+  width: 100vw;
+  height: 100%;
+  margin: auto;
+  // aspect-ratio: 5760/1360; /* 2880:680 */
+  overflow: hidden;
+  // aspect-ratio: 7680/4320;
+  background-color: black;
+}

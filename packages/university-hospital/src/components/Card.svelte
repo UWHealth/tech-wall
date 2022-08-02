@@ -1,0 +1,100 @@
+<script>
+  import defaultImage from '$assets/icon-512.png';
+  import defaultIcon from '$assets/icon_translate.svg?raw';
+
+  export let title = "Need a helper?";
+  export let subhead = "";
+  export let action = "See me for help";
+  export let image = defaultImage;
+  export let icon = defaultIcon;
+</script>
+
+<article>
+  <figure class="frame">
+    <img alt="card" src={image}>
+  </figure>
+
+  <div class="body">
+    <div class="icon-wrap">
+      {@html icon}
+    </div>
+
+    <h2>
+      <slot name="title">{title}</slot>
+    </h2>
+    <div class="subhead">
+      <slot name="subhead">{subhead}</slot>
+    </div>
+    <div class="action">
+      <slot name="action">{action}</slot>
+    </div>
+  </div>
+</article>
+
+<style lang="scss">
+  @import '../styles/functions';
+
+  article {
+    background-color: white;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  h2 {
+    font-size: type(6);
+    line-height: space(5);
+    margin-top: space(3);
+    margin-bottom: space(2);
+    font-family: bennet-banner;
+    font-weight: 900;
+    color: var(--color-blue-70);
+  }
+
+  .action {
+    margin-top: auto;
+  }
+
+  .body {
+    padding: space(4);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    color: var(--color-blue-60);
+    font-size: type(2);
+  }
+
+  .frame {
+    margin: 0;
+    aspect-ratio: 12/9;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .frame > img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+
+  .icon-wrap {
+    width: space(15);
+    height: space(15);
+    padding: space(3);
+    border-radius: 100%;
+    margin-top: space(-13);
+    margin-bottom: space(-4);
+    margin-left: space(-3);
+    background-image: url('/src/assets/gfx_icon-container.svg#white');
+    background-size: contain;
+  }
+
+  .icon-wrap :global(svg) {
+    fill: var(--color-blue-60);
+  }
+</style>

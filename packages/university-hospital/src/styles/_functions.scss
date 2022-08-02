@@ -1,0 +1,24 @@
+@use 'sass:math';
+
+$base: 57px;
+$space: $base * 1.5;
+$scale: 1.25;
+
+@function strip($v) {
+  @return math.div($v, ($v * 0 + 1));
+}
+
+@function rem($v) {
+  $f: strip($v);
+  $b: strip($base);
+  @return math.div($f, $b) * 1rem;
+}
+
+/* basic modular scale */
+@function type($s: 1) {
+  @return rem($base * math.pow($scale, $s));
+}
+/* Vertical rhythm helper */
+@function space($m: 1) {
+  @return rem(math.div($space, 2) * $m);
+}

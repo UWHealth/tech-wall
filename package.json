@@ -2,7 +2,6 @@
     "name": "walls",
     "workspaces": [
       "packages/university-hospital",
-      "packages/transplant",
       "packages/simple-contentful-fetch"
     ]
   }

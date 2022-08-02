@@ -13,7 +13,11 @@ if (
   !process.env.CONTENTFUL_SPACE_ID ||
   !process.env.CONTENTFUL_HOST
 ) {
-  throw Error('Missing environment variable');
+  throw Error('Missing environment variable', {
+    CONTENTFUL_ACCESSTOKEN: process.env.CONTENTFUL_ACCESSTOKEN,
+    CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
+    CONTENTFUL_HOST: process.env.CONTENTFUL_HOST,
+  });
 }
 
 const client = contentful.createClient({
@@ -26,7 +30,7 @@ const client = contentful.createClient({
 const getContentfulEntries = (
   { content_type = "pagePatientStory", ...options },
   out = "./content.json",
-  callback = (data) => { return; }
+  callback = () => {}
 ) => {
 
   const writeOut = (data) => {
@@ -42,16 +46,17 @@ const getContentfulEntries = (
     .catch((e) => console.error(e))
   };
 
-  client.getEntries({
-    content_type,
-    ...options
-  })
-  .then((contentType) => {
-    const updatedContent = typeof callback === 'function' ? callback(contentType) : contentType;
+  return client
+    .getEntries({
+      content_type,
+      ...options
+    })
+    .then((contentType) => {
+      const updatedContent = typeof callback === 'function' ? callback(contentType) : contentType;
 
-    writeOut(updatedContent);
-  })
-  .catch((e) => console.error(e))
+      writeOut(updatedContent);
+    })
+    .catch((e) => console.error(e))
 }
 
 export default getContentfulEntries;

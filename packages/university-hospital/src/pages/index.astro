@@ -6,14 +6,17 @@ import CardList from '$components/CardList.svelte';
 import Card from '$components/Card.svelte';
 import SelfService from '$components/SelfService.svelte';
 
-import video from '$assets/video/1035602558-preview.mp4';
+import video from '$assets/video/river.mp4?url';
 import wheelchairImg from '$assets/images/wheelchair.jpg';
+import interpretImg from '$assets/images/interpret.jpg';
+import assistImg from '$assets/images/assist.jpg';
 
 
 const cards = [
   {
     title: 'Need an interpreter?',
-    subhead: '¿Need an interpreter?'
+    subhead: '¿Need an interpreter?',
+    image: interpretImg,
   },
   {
     title: 'Need a wheelchair?',
@@ -22,7 +25,8 @@ const cards = [
   },
   {
     title: 'Need any other help?',
-    subhead: '¿Need an interpreter?'
+    subhead: '¿Need an interpreter?',
+    image: assistImg,
   }
 ];
 
@@ -97,7 +101,7 @@ const greeting = {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: 50% 10%;
   }
 
   .content {

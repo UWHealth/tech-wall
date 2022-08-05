@@ -1,7 +1,7 @@
 <script>
   import Grid from '$components/Grid.svelte';
   import map from '$assets/map-v1.svg?raw';
-  let classes;
+  let classes = '';
   export {classes as class};
 </script>
 
@@ -74,7 +74,7 @@
   .section-bg,
   .section-bg:before {
     content: '';
-    background-color: var(--color-blue-70);
+    background-color: var(--color-blue-80);
     mix-blend-mode: overlay;
     filter: brightness(.95);
     opacity: .9;

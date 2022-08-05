@@ -5,12 +5,12 @@
   export { classes as class };
 </script>
 
-<div class={`grid ${classes||''}`} style={`--columns: ${columns}; --gap: ${gap}`}>
+<div class={`${classes||''}`} style={`--columns: ${columns}; --gap: ${gap}`}>
   <slot></slot>
 </div>
 
 <style>
-  .grid {
+  div {
     display: grid;
     grid-template-columns: repeat(var(--columns, 3), 1fr);
     gap: var(--gap, 0);

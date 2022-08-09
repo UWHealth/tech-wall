@@ -30,7 +30,7 @@
   @import '../styles/functions';
 
   .root {
-    border: 1px solid rgba(white, .8);
+    border: .5px solid rgba(white, .8);
     padding: space(2);
   }
 
@@ -42,17 +42,20 @@
     font-size: type(3);
     line-height: space(3.5);
     padding-bottom: space(1);
-    border-bottom: 1px solid rgba(white, .8);
+    border-bottom: .5px solid rgba(white, .8);
   }
 
   .body {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: 1fr;
+    grid-auto-columns: space(10);
+    gap: space(2);
+    text-align: center;
   }
 
   img {
     display: block;
+    max-width: 100%;
   }
 
 </style>

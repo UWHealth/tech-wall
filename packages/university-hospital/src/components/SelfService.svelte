@@ -18,7 +18,7 @@
 <section class={classes}>
   <div class="section-bg"></div>
   <div class="content">
-    <Grid class="self-service-grid" columns={3} gap="5rem">
+    <Grid class="self-service-grid" columns={3} gap="3rem">
       <div class="content-column">
         <h3>University Hospital Highlights</h3>
         <div class="highlights-content">
@@ -38,6 +38,7 @@
         <h2>Self-Service<br>Information</h2>
 
         <div class="map-grid">
+
           <div class="map">
             {@html map}
           </div>
@@ -80,11 +81,12 @@
     line-height: space(3.5);
     padding-top: space(2);
     padding-bottom: space(1);
-    border-bottom: 1px solid rgba(white, .8);
+    border-bottom: .5px solid rgba(white, .8);
   }
 
   .content-column {
     padding-top: space(32);
+    grid-column: 1/1;
   }
 
   .map-column {

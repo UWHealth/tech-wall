@@ -58,7 +58,7 @@ export async function getStaticPaths() {
     const [title, url] = item;
     const code = await QRCode.toDataURL(url);
     promises.push(code);
-    qrCodes.push([code]);
+    qrCodes.push(code);
   });
 
   const data = await Promise.all(promises).then(() => [{ params: {name: 'index'}, props: {qrCodes}}]);

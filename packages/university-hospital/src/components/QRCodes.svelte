@@ -19,7 +19,7 @@
   <div class="body">
     {#each urls as [title, url], i}
       <div class="qr-container">
-        <img alt="" src={qrCodes[i]}/>
+        <div class="icon-wrap"><img alt="" src={qrCodes[i]}/></div>
         {title}
       </div>
     {/each}
@@ -51,6 +51,15 @@
     grid-auto-columns: space(10);
     gap: space(2);
     text-align: center;
+    padding-top: space(2);
+  }
+
+  .icon-wrap {
+    background-image: url('/src/assets/gfx_icon-container.svg#white');
+    background-size: fill;
+    padding: space(2);
+    aspect-ratio: 1/1;
+    margin-bottom: space(1);
   }
 
   img {

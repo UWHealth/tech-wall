@@ -7,7 +7,7 @@
 
 <svelte:element this={element} class={`${classes || ''} root`}>
   <div class="title"><slot name="title">{title}</slot></div>
-  <div class="body"><slot name="body">{body}</slot></div>
+  <div class="body"><slot>{body}</slot></div>
 </svelte:element>
 
 <style lang="scss">
@@ -21,6 +21,7 @@
     font-size: type(1.5);
     line-height: space(2);
   }
+
   .body {
     line-height: 1.5;
   }

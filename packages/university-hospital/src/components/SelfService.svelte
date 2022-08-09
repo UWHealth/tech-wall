@@ -2,7 +2,7 @@
   import Grid from '$components/Grid.svelte';
   import Amenity from '$components/Amenity.svelte';
   import QrCodes from './QRCodes.svelte';
-  import map from '$assets/map-v3.svg?raw';
+  import map from '$assets/map-v4.svg?raw';
   let classes = '';
   export {classes as class};
 
@@ -71,10 +71,10 @@
   h2, h3 {
     font-family: 'bennet-banner';
     font-weight: 900;
-    font-size: type(9);
-    line-height: space(9.25);
+    font-size: type(8);
+    line-height: space(8.25);
     color: white;
-    padding-top: space(10);
+    padding-top: space(9);
   }
 
   h3 {

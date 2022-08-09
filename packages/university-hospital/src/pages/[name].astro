@@ -8,9 +8,10 @@ import SelfService from '$components/SelfService.svelte';
 
 import QRCode from 'qrcode';
 import fs from 'fs-extra';
+import url from 'node:url';
 import path from 'node:path';
 
-import video from '$assets/video/river.mp4?url';
+import video from '$assets/video/river-4k.mp4?url';
 import wheelchairImg from '$assets/images/wheelchair.jpg';
 import interpretImg from '$assets/images/interpret.jpg';
 import assistImg from '$assets/images/assist.jpg';
@@ -18,23 +19,22 @@ import interpretIcon from '$assets/icon_interpret.svg?raw';
 import wheelchairIcon from '$assets/icon_wheelchair.svg?raw';
 import infoIcon from '$assets/icon_info.svg?raw';
 
-
 const cards = [
   {
     title: 'Need an interpreter?',
-    subhead: '¿Necesitas una intérprete?',
+    subhead: '¿Necesita un intérprete?',
     icon: interpretIcon,
     image: interpretImg,
   },
   {
     title: 'Need a wheelchair?',
-    subhead: '¿Necesitas una silla de ruedas?',
+    subhead: '¿Necesita una silla de ruedas?',
     image: wheelchairImg,
     icon: wheelchairIcon,
   },
   {
     title: 'Need any other help?',
-    subhead: '¿Necesitas otra ayuda?',
+    subhead: '¿Necesita alguna otra ayuda?',
     image: assistImg,
     icon: infoIcon,
   }
@@ -46,27 +46,33 @@ const greeting = {
 }
 
 export async function getStaticPaths() {
+  const __dirname = url.fileURLToPath(import.meta.url);
+  const ROOT_DIR = path.resolve(__dirname, '../../');
+  const QR_DIR = path.join(ROOT_DIR, './public/qr-codes');
 
   const selfServiceUrls = [
+    ["Patient & visitor guide", "https://patient.uwhealth.org/patient-family-visitor-guide"],
+    ["Online Gift shop", "https://secure.uwhealth.org/giftshop/index?shop=main"],
+    ["Guest Services phone", "tel:608-263-0315"],
     ["MyChart","https://mychart.uwhealth.org/"],
-    ["Patient & Visitor Guide", "https://patient.uwhealth.org/patient-family-visitor-guide"],
-    ["Online Gift Shop", "https://secure.uwhealth.org/giftshop/index?shop=main"],
-    ["Guest Services", "tel:608-263-0315"]
   ];
 
   let qrCodes = [];
-  let promises = [];
+  const options = {
+    errorCorrectionLevel: "M",
+    maskPattern: 0,
+    margin: 1
+  }
 
   selfServiceUrls.forEach(async (item) => {
     const [title, url] = item;
-    const code = await QRCode.toDataURL(url);
-    fs.ensureDir(path.resolve('../public/qr-codes'));
-    QRCode.toFile
-    qrCodes.push(code);
+    const code = await QRCode.toString(url, {type:"svg", ...options});
+    fs.ensureDirSync(QR_DIR);
+    QRCode.toFile(path.resolve(QR_DIR, `${title}.svg`), url, options);
+    qrCodes.push([title, code]);
   });
 
   const data = await Promise.all(qrCodes).then(() => {
-
     return [{ params: {name: 'index'}, props: {qrCodes}}]
   });
 
@@ -110,7 +116,7 @@ const {qrCodes} = Astro.props;
       const video = document.getElementById('video');
       if (video.paused) video.play();
 
-      setTimeout(()=> { location.reload() }, 60000);
+      setTimeout(()=> { location.reload() }, 600000);
     }
   </script>
 </Layout>

@@ -1,15 +1,5 @@
 <script>
-  import iconContainer from '$assets/gfx_icon-container.svg';
-
-  export let urls = [
-    ["MyChart","https://mychart.uwhealth.org/"],
-    ["Patient & Visitor Guide", "https://patient.uwhealth.org/patient-family-visitor-guide"],
-    ["Gift Shop", "https://secure.uwhealth.org/giftshop/index?shop=main"],
-    ["Guest Services", "tel:608-263-0315"]
-  ];
-
   export let qrCodes = [];
-
 </script>
 
 <div class="root">
@@ -17,9 +7,9 @@
     Self-Service Links
   </h3>
   <div class="body">
-    {#each urls as [title, url], i}
+    {#each qrCodes as [title, url], i}
       <div class="qr-container">
-        <div class="icon-wrap"><img alt="" src={qrCodes[i]}/></div>
+        <div class="icon-wrap"><img alt="" src={import.meta.env.BASE_URL + 'qr-codes/' + title + '.svg'}/></div>
         {title}
       </div>
     {/each}
@@ -48,8 +38,8 @@
   .body {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: space(10);
-    gap: space(2);
+    grid-auto-columns: 1fr;
+    gap: space(4);
     text-align: center;
     padding-top: space(2);
   }
@@ -57,18 +47,21 @@
   .icon-wrap {
     background-image: url('/src/assets/gfx_icon-container.svg#white');
     background-size: fill;
-    padding: space(2);
+    padding: space(1.5);
     aspect-ratio: 1/1;
     margin-bottom: space(1);
   }
 
-  .qr-container{
-    line-height: space(1.875);
+  .qr-container {
+    font-size: type(-1);
+    line-height: space(1.25);
+    letter-spacing: .1em;
   }
 
   img {
     display: block;
     max-width: 100%;
+    object-position: center;
   }
 
 </style>

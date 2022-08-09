@@ -3,5 +3,9 @@
     "workspaces": [
       "packages/university-hospital",
       "packages/simple-contentful-fetch"
-    ]
+    ],
+    "scripts": {
+      "uh:build": "npm run build -w ./packages/university-hospital",
+      "uh:dev": "npm run dev -w ./packages/university-hospital"
+    }
   }

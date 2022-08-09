@@ -2,16 +2,16 @@
   import Grid from '$components/Grid.svelte';
   import Amenity from '$components/Amenity.svelte';
   import QrCodes from './QRCodes.svelte';
-  import map from '$assets/map-v4.svg?raw';
+  import map from '$assets/map-v5.svg?raw';
   let classes = '';
   export {classes as class};
 
   export let qrCodes = [];
   export let amenities = [
-    { title: 'Dining', body: 'Full-service Four Lakes Café and “grab and go” Mendota Market are located down one floor.' },
-    { title: 'Gift shop', body: 'Just a short walk from here, you’ll find gift options for patients of all ages.' },
-    { title: 'Free Wi-Fi', body: 'Look for “Free Wi-Fi UW Health” on your device.' },
-    { title: 'Healing gardens and patios', body: 'Relax with family and friends in a soothing outdoor setting.' }
+    { title: 'Dining', body: 'Full-service Four Lakes Café and “grab and go” Mendota Market are located down one floor' },
+    { title: 'Gift shop', body: 'Just a short walk from here, you’ll find gift options for patients of all ages' },
+    { title: 'Free Wi-Fi', body: 'Look for “Free Wi-Fi UW Health” on your device' },
+    { title: 'Healing gardens and patios', body: 'Relax with family and friends in a soothing outdoor setting' }
   ];
 </script>
 

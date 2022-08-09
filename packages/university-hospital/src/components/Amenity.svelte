@@ -18,11 +18,11 @@
   }
   .title {
     font-weight: bold;
-    font-size: type(1.5);
-    line-height: space(2);
+    font-size: type(1.25);
+    line-height: space(2.25);
   }
 
   .body {
-    line-height: 1.5;
+    line-height: space(2.25);
   }
 </style>

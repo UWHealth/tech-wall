@@ -9,6 +9,7 @@
   --aspect-ratio: var(--ar-x)/var(--ar-y);
   all: initial;
   box-sizing: border-box;
+  font-size: clamp(0.025em, 0.275vw + 0.01em, 1em);
   color: var(--color-steel-60);
   line-height: 1.5;
   overflow: hidden;
@@ -17,7 +18,8 @@
 html {
   overflow: hidden;
   display: flex;
-  font-size: clamp(2px, calc(2px + #{strip($base - 2px)} * ( (100vw - 250px) / #{strip(5760px - 250px)}) ), #{$base});
+  // font-size: clamp(2px, calc(2px + #{strip($base - 2px)} * ( (100vw - 250px) / #{strip(5760px - 250px)}) ), #{$base});
+   // 16px at 5760 width
   font-weight: 400;
   max-height: 100vh;
   width: 100vw;

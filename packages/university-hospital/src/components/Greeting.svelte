@@ -34,6 +34,8 @@
     align-self: start;
     font-family: 'bennet-banner';
     font-weight: 900;
+    letter-spacing: -.02em;
+    word-spacing: .02em;
     padding-bottom: space(10);
     padding-left: space(14);
     padding-right: space(2);

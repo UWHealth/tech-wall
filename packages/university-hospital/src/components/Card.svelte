@@ -44,8 +44,8 @@
   }
 
   h2 {
-    font-size: type(6);
-    line-height: space(5);
+    font-size: type(6.5);
+    line-height: space(5.5);
     margin-top: space(3);
     margin-bottom: space(2);
     font-family: bennet-banner;
@@ -74,6 +74,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+  }
+
+  .frame::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: linear-gradient(
+      45deg,
+      rgba(34, 37, 61, 0.1),
+      rgba(0,0,0,0%)
+    );
+    mix-blend-mode: multiply;
   }
 
   .frame > img {
@@ -83,6 +99,7 @@
   }
 
   .icon-wrap {
+    position: relative;
     width: space(15);
     height: space(15);
     padding: space(3);

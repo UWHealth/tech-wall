@@ -1,0 +1,59 @@
+name: Github Pages Astro CI
+
+on:
+  # Trigger the workflow every time you push to the `main` branch
+  # Using a different branch name? Replace `main` with your branch’s name
+  #push:
+  #  branches: [main]
+  # Allows you to run this workflow manually from the Actions tab on GitHub.
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+
+    # Allow this job to push changes to your repository
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out your repository using git
+        uses: actions/checkout@v2
+
+      - name: Use Node.js 16
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: create env file
+        run: |
+          touch .env
+          echo ENGINE_API_KEY=${{ secrets.ENGINE_API_KEY }} >> .env
+          echo CONTENTFUL_ENV= ${{ secrets.CONTENTFUL_ENV }} >> .env
+          echo CONTENTFUL_HOST=${{ secrets.CONTENTFUL_HOST }} >> .env
+          echo CONTENTFUL_ACCESSTOKEN=${{ secrets.CONTENTFUL_ACCESSTOKEN }} >> .env
+          echo CONTENTFUL_SPACE_ID=${{ secrets.CONTENTFUL_SPACE_ID }} >> .env
+          echo CONTENTFUL_CONTENT_TYPE=${{ secrets.CONTENTFUL_CONTENT_TYPE }} >> .env
+          echo CONTENT_OUT_PATH=${{ secrets.CONTENT_OUT_PATH }} >> .env
+
+      - name: Install dependencies
+        run: npm ci
+        env:
+          CONTENTFUL_ENV: ${{ secrets.CONTENTFUL_ENV }}
+          CONTENTFUL_HOST: ${{ secrets.CONTENTFUL_HOST }}
+          CONTENTFUL_ACCESSTOKEN: ${{ secrets.CONTENTFUL_ACCESSTOKEN }}
+          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+          CONTENTFUL_CONTENT_TYPE: ${{ secrets.CONTENTFUL_CONTENT_TYPE }}
+          CONTENT_OUT_PATH: ${{ secrets.CONTENT_OUT_PATH }}
+
+
+      - name: Build Site
+        run: npm run build -w ./packages/university-hospital
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # `./dist` is the default Astro build directory.
+          # If you changed that, update it here too.
+          publish_dir: ./packages/university-hospital/dist

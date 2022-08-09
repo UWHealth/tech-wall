@@ -7,7 +7,6 @@ import Card from '$components/Card.svelte';
 import SelfService from '$components/SelfService.svelte';
 
 import QRCode from 'qrcode';
-import fs from 'fs-extra';
 
 import video from '$assets/video/river.mp4?url';
 import wheelchairImg from '$assets/images/wheelchair.jpg';
@@ -59,7 +58,6 @@ export async function getStaticPaths() {
     const [title, url] = item;
     const code = await QRCode.toDataURL(url);
     promises.push(code);
-    console.log(code)
     qrCodes.push([code]);
   });
 
@@ -104,6 +102,8 @@ const {qrCodes} = Astro.props;
     window.onload = () => {
       const video = document.getElementById('video');
       if (video.paused) video.play();
+
+      setTimeout(()=> { location.reload() }, 60000);
     }
   </script>
 </Layout>

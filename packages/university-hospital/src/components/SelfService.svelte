@@ -22,7 +22,7 @@
       <div class="content-column">
         <h3>University Hospital Highlights</h3>
         <div class="highlights-content">
-          <p>We want you to have the most comfortable visit possible at University Hospital. Ask Guest Services staff for more information about our amenities.</p>
+          <!-- <p>We want you to have the most comfortable visit possible at University Hospital. Ask Guest Services staff for more information about our amenities.</p> -->
           <ul class="ammenities">
             {#each amenities as {title, body}}
               <Amenity {title} class="ammenity">

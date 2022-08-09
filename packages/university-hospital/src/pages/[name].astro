@@ -8,6 +8,7 @@ import SelfService from '$components/SelfService.svelte';
 
 import QRCode from 'qrcode';
 import fs from 'fs-extra';
+import path from 'node:path';
 
 import video from '$assets/video/river.mp4?url';
 import wheelchairImg from '$assets/images/wheelchair.jpg';
@@ -59,7 +60,8 @@ export async function getStaticPaths() {
   selfServiceUrls.forEach(async (item) => {
     const [title, url] = item;
     const code = await QRCode.toDataURL(url);
-    promises.push(code);
+    fs.ensureDir(path.resolve('../public/qr-codes'));
+    QRCode.toFile
     qrCodes.push(code);
   });
 

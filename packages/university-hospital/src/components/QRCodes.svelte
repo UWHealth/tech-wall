@@ -62,6 +62,10 @@
     margin-bottom: space(1);
   }
 
+  .qr-container{
+    line-height: space(1.875);
+  }
+
   img {
     display: block;
     max-width: 100%;

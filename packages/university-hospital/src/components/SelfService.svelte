@@ -8,9 +8,9 @@
 
   export let qrCodes = [];
   export let amenities = [
-    { title: 'Dining', body: 'Our full-service Four Lakes Café and “grab and go” Mendota Market are located down one floor.' },
+    { title: 'Dining', body: 'Full-service Four Lakes Café and “grab and go” Mendota Market are located down one floor.' },
+    { title: 'Gift shop', body: 'Just a short walk from here, you’ll find gift options for patients of all ages.' },
     { title: 'Free Wi-Fi', body: 'Look for “Free Wi-Fi UW Health” on your device.' },
-    { title: 'Gift Shop', body: 'Just a short walk from here, you’ll find gift options for patients of all ages.' },
     { title: 'Healing gardens and patios', body: 'Relax with family and friends in a soothing outdoor setting.' }
   ];
 </script>
@@ -20,7 +20,7 @@
   <div class="content">
     <Grid class="self-service-grid" columns={3} gap="3rem">
       <div class="content-column">
-        <h3>University Hospital Highlights</h3>
+        <h3>University Hospital Amenities</h3>
         <div class="highlights-content">
           <!-- <p>We want you to have the most comfortable visit possible at University Hospital. Ask Guest Services staff for more information about our amenities.</p> -->
           <ul class="ammenities">
@@ -129,7 +129,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: space(3);
-    padding-top: space(3);
+    padding-top: space(2);
     margin-bottom: space(5);
   }
 

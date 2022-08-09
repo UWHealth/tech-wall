@@ -7,6 +7,7 @@ import Card from '$components/Card.svelte';
 import SelfService from '$components/SelfService.svelte';
 
 import QRCode from 'qrcode';
+import fs from 'fs-extra';
 
 import video from '$assets/video/river.mp4?url';
 import wheelchairImg from '$assets/images/wheelchair.jpg';
@@ -44,6 +45,7 @@ const greeting = {
 }
 
 export async function getStaticPaths() {
+
   const selfServiceUrls = [
     ["MyChart","https://mychart.uwhealth.org/"],
     ["Patient & Visitor Guide", "https://patient.uwhealth.org/patient-family-visitor-guide"],
@@ -54,14 +56,17 @@ export async function getStaticPaths() {
   let qrCodes = [];
   let promises = [];
 
-  await selfServiceUrls.forEach(async (item) => {
+  selfServiceUrls.forEach(async (item) => {
     const [title, url] = item;
     const code = await QRCode.toDataURL(url);
     promises.push(code);
     qrCodes.push(code);
   });
 
-  const data = await Promise.all(promises).then(() => [{ params: {name: 'index'}, props: {qrCodes}}]);
+  const data = await Promise.all(qrCodes).then(() => {
+
+    return [{ params: {name: 'index'}, props: {qrCodes}}]
+  });
 
   return data;
 }

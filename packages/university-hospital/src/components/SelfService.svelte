@@ -54,6 +54,7 @@
   @import '../styles/functions';
 
   section {
+    font-size: type(1.05);
     position: relative;
     height: 100%;
     color: white;

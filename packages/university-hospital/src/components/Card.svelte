@@ -1,6 +1,7 @@
 <script>
   import defaultImage from '$assets/icon-512.png';
   import defaultIcon from '$assets/icon_translate.svg?raw';
+  import arrowIcon from '$assets/gfx_arrow.svg?raw';
 
   export let title = "Need a helper?";
   export let subhead = "";
@@ -27,6 +28,9 @@
     </div>
     <div class="action">
       <slot name="action">{action}</slot>
+      <div class="arrow">
+        {@html arrowIcon}
+      </div>
     </div>
   </div>
 </article>
@@ -51,10 +55,20 @@
     font-family: bennet-banner;
     font-weight: 900;
     color: var(--color-blue-70);
+    position: relative;
   }
 
   .action {
     margin-top: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .arrow {
+    width: space(4);
+    margin-left: auto;
+    transform: rotate(90deg);
+    fill: var(--color-blue-60);
   }
 
   .body {

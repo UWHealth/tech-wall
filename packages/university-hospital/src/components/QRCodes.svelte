@@ -4,7 +4,7 @@
 
 <div class="root">
   <h3>
-    Self-Service Links
+    Self-service links
   </h3>
   <div class="body">
     {#each qrCodes as [title, url], i}

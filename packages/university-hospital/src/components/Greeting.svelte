@@ -44,7 +44,6 @@
     flex-direction: column;
     text-shadow: 1px 2px 2px rgba(0,0,0,0.05);
     -webkit-font-smoothing: antialiased;
-
   }
 
   .highlight {
@@ -60,6 +59,14 @@
     animation: var(--animation-length, 2s) ease-out first-word;
     animation-fill-mode: both;
     animation-delay: 1s;
+  }
+
+  :global(.prepare-reload) .highlight__first-word.enter {
+    transform: translateX(0);
+    animation-direction: reverse !important;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-play-state: unset;
   }
 
   .highlight__bg-wrap {
@@ -85,6 +92,12 @@
     animation-fill-mode: both;
     animation-direction: alternate;
     animation-delay: 1s;
+  }
+
+  :global(.prepare-reload) .highlight__bg.enter {
+    animation-direction: reverse;
+    animation-iteration-count: 1;
+    animation-play-state: running;
   }
 
   .highlight,

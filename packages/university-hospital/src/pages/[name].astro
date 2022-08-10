@@ -83,7 +83,7 @@ const {qrCodes} = Astro.props;
 ---
 
 <Layout title="University Hospital">
-  <main>
+  <main id="main">
     <div class="video-container">
       <video id="video" muted="true" autoplay="true" playsinline loop="true" preload="auto" src={video} class="video"></video>
     </div>
@@ -112,11 +112,17 @@ const {qrCodes} = Astro.props;
   </main>
 
   <script type="module">
+    const RELOAD_TIMER = 14400000;
+
+    function prepareReload() {
+      document.getElementById('main').classList.add('prepare-reload');
+    }
+
     window.onload = () => {
       const video = document.getElementById('video');
       if (video.paused) video.play();
-
-      setTimeout(()=> { location.reload() }, 600000);
+      setTimeout(()=> { prepareReload() }, (RELOAD_TIMER - 2000));
+      setTimeout(()=> { location.reload() }, RELOAD_TIMER);
     }
   </script>
 </Layout>
@@ -128,6 +134,7 @@ const {qrCodes} = Astro.props;
     display: grid;
     background-size: cover;
     position: relative;
+    transition: opacity .4s ease-out;
   }
 
   .video-container {
@@ -136,7 +143,17 @@ const {qrCodes} = Astro.props;
     overflow: hidden;
     position: relative;
     aspect-ratio: var(--aspect-ratio);
+    animation: fade-in 2s 0s ease-out both normal;
+    transition: opacity 2s ease-in-out;
   }
+
+  :global(.prepare-reload) .video-container {
+    opacity: 0;
+    animation: fade-out 2s ease-out 0s 1 normal both !important;
+  }
+
+  @keyframes fade-in { 0% { opacity: 0;}; 100% {opacity: 1;}}
+  @keyframes fade-out { 0% { opacity: 1;}; 100% {opacity: 0;}}
 
   .video-container,
   .content {
@@ -182,5 +199,23 @@ const {qrCodes} = Astro.props;
     left: 0; top: 0; bottom: 0; right: 0;
     background-image: linear-gradient(210deg,rgb(34 195 255 / 0%) 65%,rgb(1 27 72 / 70%));
     mix-blend-mode: multiply;
+    animation: fade-in 1.25s ease-out 0s 1 normal both;
+  }
+
+  :global(.prepare-reload) .skrim {
+    animation-direction: reverse;
+    animation-iteration-count: 1;
+    animation-play-state: running;
+  }
+
+  @keyframes skrim-out {
+    0% {
+      opacity: 0;
+      background-image: linear-gradient(210deg,#100e25 0%,rgb(0 0 0 / 100%));
+    }
+    100% {
+      opacity: .5;
+      background-image: linear-gradient(210deg,#100e25 0%,rgb(0 0 0 / 100%));
+    }
   }
 </style>

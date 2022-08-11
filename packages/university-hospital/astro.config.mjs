@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import svelte from '@astrojs/svelte';
 import 'dotenv/config';
 
-const IS_GITHUB = process.env.CI;
+const IS_GITHUB = process.env.GITHUB_ACTIONS;
 const IS_JENKINS = process.env.JENKINS;
 const GITHUB_SITE = 'https://uwhealth.github.io';
 const GITHUB_BASE = '/tech-wall';

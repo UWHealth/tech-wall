@@ -6,11 +6,6 @@ import CardList from '$components/CardList.svelte';
 import Card from '$components/Card.svelte';
 import SelfService from '$components/SelfService.svelte';
 
-import QRCode from 'qrcode';
-import fs from 'fs-extra';
-import url from 'node:url';
-import path from 'node:path';
-
 import video from '$assets/video/river-4k.mp4?url';
 import wheelchairImg from '$assets/images/wheelchair.jpg';
 import interpretImg from '$assets/images/interpret.jpg';
@@ -45,41 +40,12 @@ const greeting = {
   greeting: 'How can we help you?'
 }
 
-export async function getStaticPaths() {
-  const __dirname = url.fileURLToPath(import.meta.url);
-  const ROOT_DIR = path.resolve(__dirname, '../../');
-  const QR_DIR = path.join(ROOT_DIR, './public/qr-codes');
-
-  const selfServiceUrls = [
-    ["Patient & visitor guide", "https://patient.uwhealth.org/patient-family-visitor-guide"],
-    ["Online Gift shop", "https://secure.uwhealth.org/giftshop/index?shop=main"],
-    ["Guest Services phone", "tel:608-263-0315"],
-    ["MyChart","https://mychart.uwhealth.org/"],
-  ];
-
-  let qrCodes = [];
-  const options = {
-    errorCorrectionLevel: "M",
-    maskPattern: 0,
-    margin: 1
-  }
-
-  selfServiceUrls.forEach(async (item) => {
-    const [title, url] = item;
-    const code = await QRCode.toString(url, {type:"svg", ...options});
-    fs.ensureDirSync(QR_DIR);
-    QRCode.toFile(path.resolve(QR_DIR, `${title}.svg`), url, options);
-    qrCodes.push([title, code]);
-  });
-
-  const data = await Promise.all(qrCodes).then(() => {
-    return [{ params: {name: 'index'}, props: {qrCodes}}]
-  });
-
-  return data;
-}
-
-const {qrCodes} = Astro.props;
+let qrCodes = [
+  [ "Patient & visitor guide" ],
+  [ "Online Gift shop" ],
+  [ "Guest Services phone" ],
+  [ "MyChart" ],
+];
 ---
 
 <Layout title="University Hospital">

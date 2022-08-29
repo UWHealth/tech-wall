@@ -6,11 +6,13 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
+    "jenkins": "cross-env JENKINS=\"true\" astro build",
     "preview": "astro preview"
   },
   "devDependencies": {
     "@astrojs/svelte": "^0.5.1",
     "astro": "^1.0.0-rc.3",
+    "cross-env": "^7.0.3",
     "sass": "^1.54.0",
     "svelte": "^3.49.0"
   },

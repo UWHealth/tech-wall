@@ -65,7 +65,7 @@
   }
 
   :global(.self-service-grid) {
-    padding-left: 16%;
+    padding-left: 9%;
   }
 
   h2, h3 {
@@ -108,7 +108,7 @@
     opacity: .85;
     position: absolute;
     top: 0;
-    width: 200%;
+    width: 150%;
     bottom: 0;
     transform-origin: 50% 0;
     transform: skew(-30deg) translateX(12%);

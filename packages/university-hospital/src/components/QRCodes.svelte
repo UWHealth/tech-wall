@@ -47,7 +47,8 @@
   .icon-wrap {
     background-image: url('/src/assets/gfx_icon-container.svg#white');
     background-size: fill;
-    padding: space(1.5);
+    width: space(11);
+    padding: space(1.2);
     aspect-ratio: 1/1;
     margin-bottom: space(1);
   }

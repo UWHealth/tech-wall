@@ -9,7 +9,8 @@
   <div class="body">
     {#each qrCodes as [title, url], i}
       <div class="qr-container">
-        <div class="icon-wrap"><img alt="" src={import.meta.env.BASE_URL + 'qr-codes/' + title + '.svg'}/></div>
+        <!-- *1*.svg avoids usage of a cached version of the file -->
+        <div class="icon-wrap"><img alt="" src={import.meta.env.BASE_URL + 'qr-codes/' + title + '1.svg'}/></div>
         {title}
       </div>
     {/each}

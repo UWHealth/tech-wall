@@ -2,6 +2,7 @@
 dist/
 .output/
 src/public/
+.astro/
 
 # dependencies
 node_modules/

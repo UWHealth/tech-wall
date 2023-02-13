@@ -3,37 +3,12 @@ import Layout from "../layouts/Layout.astro";
 import Grid from '$components/Grid.svelte';
 import Greeting from '$components/Greeting.svelte';
 import CardList from '$components/CardList.svelte';
-import Card from '$components/Card.svelte';
+import Card from '$components/CardAdvert.svelte';
 import SelfService from '$components/SelfService.svelte';
 
-import video from '$assets/video/river-4k.mp4?url';
-import wheelchairImg from '$assets/images/wheelchair.jpg';
-import interpretImg from '$assets/images/interpret.jpg';
-import assistImg from '$assets/images/assist.jpg';
-import interpretIcon from '$assets/icon_interpret.svg?raw';
-import wheelchairIcon from '$assets/icon_wheelchair.svg?raw';
-import infoIcon from '$assets/icon_info.svg?raw';
+import video from '$assets/video/winter-4k.mp4?url';
 
-const cards = [
-  {
-    title: 'Need an interpreter?',
-    subhead: '¿Necesita un intérprete?',
-    icon: interpretIcon,
-    image: interpretImg,
-  },
-  {
-    title: 'Need a wheelchair?',
-    subhead: '¿Necesita una silla de ruedas?',
-    image: wheelchairImg,
-    icon: wheelchairIcon,
-  },
-  {
-    title: 'Need any other help?',
-    subhead: '¿Necesita alguna otra ayuda?',
-    image: assistImg,
-    icon: infoIcon,
-  }
-];
+const cards = await Astro.glob('../content/cards/*.mdx');
 
 const greeting = {
   highlighted: 'Hello.',
@@ -48,7 +23,7 @@ let qrCodes = [
 ];
 ---
 
-<Layout title="University Hospital">
+<Layout title="University Hospital" bodyClass={'winter'}>
   <main id="main">
     <div class="video-container">
       <video id="video" muted="true" autoplay="true" playsinline loop="true" preload="auto" src={video} class="video"></video>
@@ -62,7 +37,7 @@ let qrCodes = [
         <Greeting {...greeting} />
 
         <CardList class='card-list'>
-          {cards.map(({title, subhead, image, icon}) => (
+          {cards.map(({ title, subhead, image, icon }) => (
             <Card subhead={subhead} image={image} icon={icon}>
               <Fragment slot="title">{title}</Fragment>
             </Card>

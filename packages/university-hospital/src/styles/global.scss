@@ -46,9 +46,13 @@ body {
   height: 100%;
   margin: auto;
   // aspect-ratio: 5760/1360; /* 2880:680 */
-  overflow: hidden;
   // aspect-ratio: 7680/4320;
+  overflow: hidden;
   background-color: black;
   background-image: linear-gradient(to bottom, #aadffb,#947442,#2c588a);
   background-repeat: no-repeat;
+}
+
+body.winter {
+  background-image: linear-gradient(to bottom, #edccb5, #a3837b, #534856 );
 }

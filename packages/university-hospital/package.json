@@ -1,5 +1,5 @@
 {
-  "name": "@example/basics",
+  "name": "@uwhealth/walls-university-hospital",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,14 +10,15 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "@astrojs/svelte": "^0.5.1",
-    "astro": "^1.0.0-rc.3",
+    "@astrojs/svelte": "^2.0.1",
+    "astro": "^2.0.10",
     "cross-env": "^7.0.3",
-    "sass": "^1.54.0",
-    "svelte": "^3.49.0"
+    "sass": "^1.58.0",
+    "svelte": "^3.55.1"
   },
   "dependencies": {
-    "fs-extra": "^10.1.0",
+    "@astrojs/mdx": "^0.16.0",
+    "fs-extra": "^11.1.0",
     "qrcode": "^1.5.1"
   }
 }

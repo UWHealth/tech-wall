@@ -12,6 +12,6 @@
   @import '../styles/functions';
 
   :global(.card-grid) {
-    padding: space(18) 15% space(18) 0;
+    padding: space(18) 15% space(20) 0;
   }
 </style>

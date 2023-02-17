@@ -1,4 +1,6 @@
 <script>
+  import CardImage from '$components/CardImage.svelte';
+
   import defaultImage from '$assets/icon-512.png';
   import defaultIcon from '$assets/icon_translate.svg?raw';
   import arrowIcon from '$assets/gfx_arrow.svg?raw';
@@ -12,9 +14,8 @@
 </script>
 
 <article class:card--frame-break={overflow}>
-  <figure class="frame" class:frame--frame-break={overflow}>
-    <img alt="card" src={image}>
-  </figure>
+
+  <CardImage {overflow} images={image} />
 
   <div class="body">
     <h2>
@@ -39,9 +40,7 @@
   @import '../styles/functions';
 
   article {
-    // --frame-background-color: #f1ede8;
-    --frame-background-color: #fff;
-    --frame-border-radius: 32px 192px 140px 20px/85px;
+    background-image: linear-gradient(to bottom, var(--color-red-01) 25%, white);
     background-color: white;
     padding: 0;
     display: flex;
@@ -88,34 +87,6 @@
     flex-grow: 1;
     color: var(--color-blue-60);
     font-size: type(2);
-  }
-
-  .frame {
-    margin: 0;
-    aspect-ratio: 12/9;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    background-color: var(--frame-background-color);
-    border-radius: var(--frame-border-radius);
-  }
-
-  .frame > img {
-    min-inline-size: 100%;
-    min-block-size: 100%;
-    object-fit: cover;
-  }
-
-  .frame--frame-break {
-    overflow: visible;
-    max-height: 27rem;
-  }
-
-  .frame--frame-break > img {
-    min-block-size: 110%;
-    min-inline-size: 105%;
   }
 
   .icon-wrap {

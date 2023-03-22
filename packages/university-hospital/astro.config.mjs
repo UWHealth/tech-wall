@@ -1,7 +1,8 @@
 import { defineConfig } from 'astro/config';
 import svelte from '@astrojs/svelte';
-import 'dotenv/config';
 import mdx from "@astrojs/mdx";
+import 'dotenv/config';
+
 const IS_GITHUB = process.env.GITHUB_ACTIONS;
 const IS_JENKINS = process.env.JENKINS;
 const GITHUB_SITE = 'https://uwhealth.github.io';

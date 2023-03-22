@@ -53,7 +53,7 @@ let qrCodes = [
   </main>
 
   <script type="module">
-    const RELOAD_TIMER = 14400000;
+    const RELOAD_TIMER = 14400000; // 4 hours
 
     function prepareReload() {
       document.getElementById('main').classList.add('prepare-reload');
@@ -140,7 +140,7 @@ let qrCodes = [
     left: 0; top: 0; bottom: 0; right: 0;
     /* background-image: linear-gradient(210deg,rgb(34 195 255 / 0%) 65%,rgb(1 27 72 / 70%)); */
     /* mix-blend-mode: multiply; */
-    background-image: linear-gradient(210deg,rgba(186, 134, 171, 0.02) 55%,rgba(180, 141, 0, 0.2));
+    background-image: linear-gradient(210deg,rgba(44, 9, 126, 0.02) 55%,rgba(78, 39, 85, 0.5));
     mix-blend-mode: overlay;
     animation: fade-in 1.25s ease-out 0s 1 normal both;
   }

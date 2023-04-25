@@ -2,7 +2,8 @@
     "name": "walls",
     "workspaces": [
       "packages/university-hospital",
-      "packages/simple-contentful-fetch"
+      "packages/simple-contentful-fetch",
+      "packages/controller-app"
     ],
     "scripts": {
       "uh:build": "npm run build -w ./packages/university-hospital",

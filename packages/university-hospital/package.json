@@ -19,6 +19,7 @@
   "dependencies": {
     "@astrojs/mdx": "^0.16.0",
     "fs-extra": "^11.1.0",
-    "qrcode": "^1.5.1"
+    "qrcode": "^1.5.1",
+    "ws": "^8.13.0"
   }
 }

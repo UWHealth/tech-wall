@@ -8,7 +8,7 @@ $scale: 1.25;
   @return math.div($v, ($v * 0 + 1));
 }
 
-@function rem($v) {
+@function rems($v: $base) {
   $f: strip($v);
   $b: strip($base);
   @return math.div($f, $b) * 1rem;
@@ -16,9 +16,9 @@ $scale: 1.25;
 
 /* basic modular scale */
 @function type($s: 1) {
-  @return rem($base * math.pow($scale, $s));
+  @return rems($base * math.pow($scale, $s));
 }
 /* Vertical rhythm helper */
 @function space($m: 1) {
-  @return rem(math.div($space, 2) * $m);
+  @return rems(math.div($space, 2) * $m);
 }

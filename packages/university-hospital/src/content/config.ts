@@ -4,10 +4,10 @@ const cardCollection = defineCollection({
   schema: z.object({
     title: z.string().optional(),
     subhead: z.string().optional(),
-    image: z.union(
+    image: z.union([
       z.string(),
       z.array(z.string())
-    ).optional(),
+    ]).optional(),
     icon: z.string().optional(),
   })
 });

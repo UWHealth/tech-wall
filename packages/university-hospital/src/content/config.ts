@@ -1,14 +1,14 @@
 import { z, defineCollection } from 'astro:content';
 
 const cardCollection = defineCollection({
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string().optional(),
     subhead: z.string().optional(),
     image: z.union([
-      z.string(),
-      z.array(z.string())
+       image(),
+       z.array(image())
     ]).optional(),
-    icon: z.string().optional(),
+    icon: z.string().optional()
   })
 });
 

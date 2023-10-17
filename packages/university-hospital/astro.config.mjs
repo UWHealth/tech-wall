@@ -15,6 +15,9 @@ const base = IS_JENKINS && JENKINS_BASE || IS_GITHUB && GITHUB_BASE || undefined
 
 // https://astro.build/config
 export default defineConfig({
+  experimental: {
+    assets: true
+  },
   integrations: [svelte(), mdx()],
   output: 'static',
   build: {

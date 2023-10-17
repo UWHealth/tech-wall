@@ -1,5 +1,7 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
+import IconProvider from "$components/IconProvider.astro";
 import Grid from '$components/Grid.svelte';
 import Greeting from '$components/Greeting.svelte';
 import CardList from '$components/CardList.svelte';
@@ -8,7 +10,7 @@ import SelfService from '$components/SelfService.svelte';
 
 import video from '$assets/video/spring-4k.mp4?url';
 
-const cards = await Astro.glob('../content/cards/*.mdx');
+const cards = await getCollection('cards');
 
 const greeting = {
   highlighted: 'Hello.',
@@ -24,6 +26,7 @@ let qrCodes = [
 ---
 
 <Layout title="University Hospital" bodyClass={'spring'}>
+  <IconProvider />
   <main id="main">
     <div class="video-container">
       <video id="video" muted="true" autoplay="true" playsinline loop="true" preload="auto" src={video} class="video"></video>
@@ -37,11 +40,16 @@ let qrCodes = [
         <Greeting {...greeting} />
 
         <CardList class='card-list'>
-          {cards.map(({ title, subhead, image, icon }) => (
-            <Card subhead={subhead} image={image} icon={icon}>
-              <Fragment slot="title">{title}</Fragment>
-            </Card>
-          ))}
+          {cards.map((card) => {
+            const { subhead, image, icon, title } = card.data;
+
+            return (
+              <Card image={image} icon={icon}>
+                <Fragment slot="title">{title}</Fragment>
+                <Fragment slot="subhead">{subhead}</Fragment>
+              </Card>
+            )
+          })}
         </CardList>
 
         <div class="self-service">
@@ -69,8 +77,8 @@ let qrCodes = [
 </Layout>
 
 <style>
-  @keyframes fade-in { 0% { opacity: 0;}; 100% {opacity: 1;}}
-  @keyframes fade-out { 0% { opacity: 1;}; 100% {opacity: 0;}}
+  @keyframes fade-in { 0% { opacity: 0;} 100% {opacity: 1;}}
+  @keyframes fade-out { 0% { opacity: 1;} 100% {opacity: 0;}}
 
   main {
     height: 100%;

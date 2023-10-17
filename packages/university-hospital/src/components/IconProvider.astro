@@ -1,0 +1,35 @@
+---
+import parse from 'node-html-parser';
+
+/**
+ * Converts object of (svg) file imports into a string of symbols.
+ * @param icons
+ * @returns {[String]} svgs as `<symbol>`
+ */
+function convertIconsIntoSymbols(icons : Record<string, string>) {
+  return Object.keys(icons)
+    .map((icon) => {
+      const root = parse(icons[icon]);
+      const svg = root.querySelector("svg");
+      if (!svg) throw new Error("No SVG element found");
+      svg.tagName = "symbol";
+      svg.setAttribute("id", icon.replace(/\.svg$/, "").replace('../assets/icons/', ""));
+      svg.removeAttribute("xmlns");
+      svg.removeAttribute("xmlns:xlink");
+      svg.removeAttribute("version");
+      svg.removeAttribute("width");
+      svg.removeAttribute("height");
+      return svg.toString().trim();
+    }
+  );
+}
+
+const icons = await import.meta.glob(`../assets/icons/*.svg`, { as: 'raw', eager: true });
+const symbolsHtml = convertIconsIntoSymbols(icons).join("\n");
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0" height="0">
+  <defs>
+    <Fragment set:html={symbolsHtml} />
+  </defs>
+</svg>

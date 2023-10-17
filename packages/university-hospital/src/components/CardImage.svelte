@@ -1,9 +1,5 @@
 <script>
-  import defaultImage from '$assets/icon-512.png';
-  /**
-   * @type {String|String[]}
-   */
-  export let images = defaultImage;
+  export let images;
   export let overflow = true;
 
   const imageArray = Array.isArray(images) ? images : [images];
@@ -12,7 +8,8 @@
 
 <figure class="frame" class:frame--frame-break={overflow} class:frame--multiple={multipleImages}>
   {#each imageArray as image, index}
-    <img class={`image-${index}`} alt="card" src={image}>
+    { @const { src = '' } = image }
+    <img class={`image-${index}`} alt="card" src={src}>
   {/each}
 </figure>
 

@@ -22,3 +22,17 @@ const { title, bodyClass } = Astro.props as Props;
 		<slot />
 	</body>
 </html>
+
+<style>
+  body.winter {
+    background-image: linear-gradient(to bottom, #edccb5, #a3837b, #534856 );
+  }
+
+  body.spring {
+    background-image: linear-gradient(to bottom, #b0d8e5, #caba7c, #b78d2e );
+  }
+
+  body.summer {
+    background-image: linear-gradient(to bottom, #c8eaf7, #304e3f, #646c2f, #b28500);
+  }
+</style>

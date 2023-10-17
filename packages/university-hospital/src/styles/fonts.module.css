@@ -19,7 +19,7 @@
 @font-face {
   font-family:"proxima-nova";
   src:local("Proxima Nova Bold Italic"),
-    url("/src/assets/fonts/proxima-bold-italic.woff2") format("woff2");
+    url("/src/assets/fonts/proxima-nova-bold-italic.woff2") format("woff2");
   font-display:block;font-style:italic;font-weight:700;font-stretch:normal;
 }
 /** Proxima Nova Medium */
@@ -69,6 +69,6 @@
 @font-face {
   font-family: 'bennet-display';
   src: local('Bennet Display'),
-    url('/src/assets/bennet-display-medium.woff2') format('woff2');
+    url('/src/assets/fonts/bennet-display-medium.woff2') format('woff2');
   font-display: auto; font-style: normal;font-weight: 400;font-stretch:normal;
 }

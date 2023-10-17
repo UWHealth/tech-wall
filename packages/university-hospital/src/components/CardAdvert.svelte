@@ -1,16 +1,17 @@
 <script>
   import CardImage from '$components/CardImage.svelte';
-
-  import defaultImage from '$assets/icon-512.png';
-  import defaultIcon from '$assets/icon_translate.svg?raw';
-  import arrowIcon from '$assets/gfx_arrow.svg?raw';
+  import Icon from '$components/Icon.svelte';
+  import arrowSvg from '$assets/gfx_arrow.svg?raw';
 
   export let title = "Need a helper?";
   export let subhead = "";
   export let action = "See me for help";
-  export let image = defaultImage;
-  export let icon = defaultIcon;
+
+  /** @type { import('astro').ImageMetadata } */
+  export let image;
+  export let icon = 'icon_translate';
   export let overflow = true;
+
 </script>
 
 <article class:card--frame-break={overflow}>
@@ -26,11 +27,11 @@
     </div>
     <div class="action">
       <div class="icon-wrap">
-        {@html icon}
+        <Icon {icon}/>
       </div>
       <slot name="action">{action}</slot>
       <div class="arrow">
-        {@html arrowIcon}
+        {@html arrowSvg}
       </div>
     </div>
   </div>
@@ -100,5 +101,7 @@
 
   .icon-wrap :global(svg) {
     fill: var(--color-blue-60);
+    max-width: 100%;
+    height: auto;
   }
 </style>

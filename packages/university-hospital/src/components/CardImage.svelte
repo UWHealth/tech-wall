@@ -12,7 +12,7 @@
 
 <figure class="frame" class:frame--frame-break={overflow} class:frame--multiple={multipleImages}>
   {#each imageArray as image, index}
-    <img class={`image-${index}`} alt="card" src={image}>
+    <img class={`image-${index}`} alt="card" src={image.src}>
   {/each}
 </figure>
 

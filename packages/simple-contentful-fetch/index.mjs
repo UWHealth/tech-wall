@@ -1,50 +1,73 @@
 import fs from 'fs-extra';
+import fetch from 'node-fetch';
 import path from 'path';
 import contentful from 'contentful';
-import * as url from 'url';
+import { finished } from 'node:stream/promises';
+import { debounce } from './utils.mjs';
 import 'dotenv/config';
-import { write } from 'fs';
 
-const __filename = url.fileURLToPath(import.meta.url);
-const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+const syncAsset = async (out, url) => {
+  if (!url) return;
+  let i = 0;
+  let dots = Array.from('...');
+  let writeDone;
 
-if (
-  !process.env.CONTENTFUL_ACCESSTOKEN ||
-  !process.env.CONTENTFUL_SPACE_ID ||
-  !process.env.CONTENTFUL_HOST
-) {
-  throw Error('Missing environment variable', {
-    CONTENTFUL_ACCESSTOKEN: process.env.CONTENTFUL_ACCESSTOKEN,
-    CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
-    CONTENTFUL_HOST: process.env.CONTENTFUL_HOST,
+  console.log('Fetching', url);
+
+  const response = await fetch(url)
+    .catch(err => console.log('Fetch error', url, err));
+
+  if (!response.ok) { console.error(`Cannot download asset from ${url}`, response.statusText); return Promise.reject(response.statusText); }
+
+  fs.ensureDirSync(path.dirname(out));
+
+  const fileStream = fs.createWriteStream(out);
+
+  const writingFile = debounce(() => {
+    if (writeDone) { return; }
+    i = i > 2 ? 0 : i + 1;
+    process.stdout.clearLine(1);
+    process.stdout.cursorTo(0);
+    process.stdout.write('Downloading file' + dots.slice(0,i).join(''));
+  }, 50, true);
+
+  process.stdout.write("\x1B[?25l"); //disable cursor
+
+  response.body.on('data', writingFile);
+
+  fileStream.on('finish', () => {
+    writeDone = true;
+    process.stdout.write('\u001B[?25h'); // enable cursor
+    console.log('');
+    console.log('Downloaded', out);
   });
-}
 
-const client = contentful.createClient({
-  space: process.env.CONTENTFUL_SPACE_ID,
-  environment: process.env.CONTENTFUL_ENV || "master",
-  accessToken: process.env.CONTENTFUL_ACCESSTOKEN,
-  host: process.env.CONTENTFUL_HOST
-});
+  return finished(response.body.pipe(fileStream))
+    .catch(console.error);
+}
 
 const getContentfulEntries = (
   { content_type = "pagePatientStory", ...options },
-  out = "./content.json",
   callback = () => {}
 ) => {
+  if (
+    !process.env.CONTENTFUL_ACCESSTOKEN ||
+    !process.env.CONTENTFUL_SPACE_ID ||
+    !process.env.CONTENTFUL_HOST
+  ) {
+    throw Error('Missing environment variable', {
+      CONTENTFUL_ACCESSTOKEN: process.env.CONTENTFUL_ACCESSTOKEN,
+      CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
+      CONTENTFUL_HOST: process.env.CONTENTFUL_HOST,
+    });
+  }
 
-  const writeOut = (data) => {
-    // Ensure the path is resolved
-    const outFile = path.resolve(out);
-    // Ensure circular references are cleaned up
-    const content = JSON.parse(data.stringifySafe());
-
-    fs.outputJSON(
-      outFile, content, { spaces: 2 }
-    )
-    .then(() => console.log(`Successfully wrote content type "${content_type}" to "${outFile}" (${data.items.length} entries).\n`))
-    .catch((e) => console.error(e))
-  };
+  const client = contentful.createClient({
+    space: process.env.CONTENTFUL_SPACE_ID,
+    environment: process.env.CONTENTFUL_ENV || "master",
+    accessToken: process.env.CONTENTFUL_ACCESSTOKEN,
+    host: process.env.CONTENTFUL_HOST
+  });
 
   return client
     .getEntries({
@@ -53,11 +76,38 @@ const getContentfulEntries = (
     })
     .then((contentType) => {
       const updatedContent = typeof callback === 'function' ? callback(contentType) : contentType;
-
-      writeOut(updatedContent);
+      return updatedContent;
     })
-    .catch((e) => console.error(e))
+    .catch(console.error)
 }
 
-export default getContentfulEntries;
-export {getContentfulEntries};
+/**
+ *
+ * @param {string} out path to write data to
+ * @param {Object} data json data to write out
+ * @returns {Promise}
+ */
+const writeContentfulData = async (out, data) => {
+  // Ensure the path is resolved
+  const outFile = path.resolve(out);
+  // Ensure circular references are cleaned up
+  const safeData = data.stringifySafe ? data.stringifySafe() : data;
+  const content = JSON.parse(safeData);
+
+  return fs.outputJSON(
+    outFile, content, { spaces: 2 }
+  )
+  .catch(console.error)
+};
+
+const syncContentful = async (
+  out = "./content.json",
+  contentfulOptions,
+  callback = () => {}
+) => {
+  const content = await getContentfulEntries(contentfulOptions, callback);
+  return writeContentfulData(out, content).then(() => console.log(`Successfully wrote content type "${content_type}" to "${out}".`));
+}
+
+export { syncContentful, syncAsset, getContentfulEntries, writeContentfulData, fs, fetch };
+export { get__name } from './utils.mjs';

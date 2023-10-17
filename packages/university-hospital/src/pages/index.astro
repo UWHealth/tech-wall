@@ -5,10 +5,14 @@ import Greeting from '$components/Greeting.svelte';
 import CardList from '$components/CardList.svelte';
 import Card from '$components/CardAdvert.svelte';
 import SelfService from '$components/SelfService.svelte';
+import { getEntry } from 'astro:content';
 
-import video from '$assets/video/summer-4k.mp4?url';
+// import video from 'https://bynder.uwhealth.org/m/1b36dd22807177c4/original/Tech-Wall-Lake.mp4';
+// const video = await fetch('/video.mp4');
 
 const cards = await Astro.glob('../content/cards/*.mdx');
+const { data: layoutData } = await getEntry('layout', 'base');
+const { video } = layoutData;
 
 const greeting = {
   highlighted: 'Hello.',
@@ -23,7 +27,8 @@ let qrCodes = [
 ];
 ---
 
-<Layout title="University Hospital" bodyClass={'summer'}>
+
+<Layout title="University Hospital" bodyClass={'autumn'}>
   <main id="main">
     <div class="video-container">
       <video id="video" muted="true" autoplay="true" playsinline loop="true" preload="auto" src={video} class="video"></video>
@@ -59,7 +64,9 @@ let qrCodes = [
       document.getElementById('main').classList.add('prepare-reload');
     }
 
-    window.onload = () => {
+
+    window.onload = async () => {
+      // const response = await fetch("/video.mp4");
       const video = document.getElementById('video');
       if (video.paused) video.play();
       setTimeout(()=> { prepareReload() }, (RELOAD_TIMER - 2000));
@@ -138,10 +145,10 @@ let qrCodes = [
     position: absolute;
     z-index: 1;
     left: 0; top: 0; bottom: 0; right: 0;
-    /* background-image: linear-gradient(210deg,rgb(34 195 255 / 0%) 65%,rgba(84, 35, 78, 0.876));
+    /* background-image: linear-gradient(210deg,rgb(34 195 255 / 0%) 65%,rgba(84, 35, 78, 0.75));
+    mix-blend-mode: multiply; */
+    background-image: linear-gradient(210deg,rgba(44, 9, 126, 0.02) 55%,rgba(47, 24, 3, 0.5));
     mix-blend-mode: multiply;
-    /* background-image: linear-gradient(210deg,rgba(44, 9, 126, 0.02) 55%,rgba(78, 39, 85, 0.5));
-    mix-blend-mode: overlay; */
     /* background-image:
       linear-gradient(210deg, white, black),
       linear-gradient(
@@ -153,13 +160,13 @@ let qrCodes = [
       )
     ;
     mix-blend-mode: overlay; */
-    background-image: radial-gradient(
+    /* background-image: radial-gradient(
       45% 40% at 10% 46%,
       hsl(48deg 100% 24% / 50%) 0%,
       hsl(97deg 85% 30% / 15%) 40%,
       hsl(205deg 83% 45% / 0%) 80%
     );
-    mix-blend-mode: multiply;
+    mix-blend-mode: multiply; */
     animation: fade-in 1.25s ease-out 0s 1 normal both;
   }
 

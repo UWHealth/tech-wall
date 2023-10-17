@@ -1,7 +1,8 @@
 import { z, defineCollection } from 'astro:content';
 
 const cardCollection = defineCollection({
-  schema: z.object({
+  type: 'content',
+  schema: ({ image }) =>  z.object({
     title: z.string().optional(),
     subhead: z.string().optional(),
     image: z.union(
@@ -12,6 +13,14 @@ const cardCollection = defineCollection({
   })
 });
 
+const layoutCollection = defineCollection({
+  type: 'data',
+  schema: z.object({
+    video: z.string(),
+  })
+})
+
 export const collections = {
   'cards': cardCollection,
+  'layout': layoutCollection
 };

@@ -7,7 +7,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "jenkins": "cross-env JENKINS=\"true\" astro build",
+    "jenkins": "cross-env JENKINS=\"true\" npm run build",
     "preview": "astro preview",
     "prebuild": "node scripts/getContent.js"
   },

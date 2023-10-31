@@ -1,6 +1,5 @@
 import { defineConfig } from 'astro/config';
 import svelte from '@astrojs/svelte';
-import urlResolve from 'rollup-plugin-url-resolve';
 import mdx from "@astrojs/mdx";
 import 'dotenv/config';
 
@@ -24,16 +23,4 @@ export default defineConfig({
   scopedStyleStrategy: 'class',
   site,
   base,
-  vite: {
-    plugins: [
-      {
-        enforce: 'pre',
-        ...urlResolve({
-          // Caches the results of all fetch operations
-          // in a local directory named ".cache"
-          cacheManager: '.cache'
-        })
-      }
-    ]
-  }
 });

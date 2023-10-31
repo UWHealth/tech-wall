@@ -17,11 +17,8 @@
     "astro": "^3.3.3",
     "cross-env": "^7.0.3",
     "dotenv": "^16.3.1",
-    "node-fetch": "^3.3.2",
-    "rollup-plugin-url-resolve": "^0.2.0",
     "sass": "^1.69.4",
-    "svelte": "^4.2.2",
-    "vite-plugin-remote-assets": "^0.3.2"
+    "svelte": "^4.2.2"
   },
   "dependencies": {
     "@astrojs/mdx": "^1.1.2",

@@ -12,7 +12,8 @@ import { getEntry } from 'astro:content';
 
 const cards = await Astro.glob('../content/cards/*.mdx');
 const { data: layoutData } = await getEntry('layout', 'base');
-const { video } = layoutData;
+let { video } = layoutData;
+video = video.replace('/public/', import.meta.env.BASE_URL);
 
 const greeting = {
   highlighted: 'Hello.',

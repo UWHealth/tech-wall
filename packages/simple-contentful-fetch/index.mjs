@@ -24,11 +24,12 @@ const syncAsset = async (out, url) => {
   const fileStream = fs.createWriteStream(out);
 
   const writingFile = debounce(() => {
-    if (writeDone) { return; }
-    i = i > 2 ? 0 : i + 1;
-    process.stdout.clearLine(1);
-    process.stdout.cursorTo(0);
-    process.stdout.write('Downloading file' + dots.slice(0,i).join(''));
+    if (!writeDone || process.stdout?.clearLine) {
+      i = i > 2 ? 0 : i + 1;
+      process.stdout.clearLine(1);
+      process.stdout.cursorTo(0);
+      process.stdout.write('Downloading file' + dots.slice(0,i).join(''));
+    }
   }, 50, true);
 
   process.stdout.write("\x1B[?25l"); //disable cursor

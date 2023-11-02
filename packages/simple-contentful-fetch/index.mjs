@@ -24,7 +24,7 @@ const syncAsset = async (out, url) => {
   const fileStream = fs.createWriteStream(out);
 
   const writingFile = debounce(() => {
-    if (!writeDone || typeof process.stdout?.clearLine === 'function') {
+    if (!writeDone && typeof process.stdout?.clearLine === 'function') {
       i = i > 2 ? 0 : i + 1;
       process.stdout.clearLine(1);
       process.stdout.cursorTo(0);

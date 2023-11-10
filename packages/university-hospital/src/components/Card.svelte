@@ -5,6 +5,9 @@
 
   export let title = "Need a helper?";
   export let subhead = "";
+  /**
+   * @type {String|Boolean}
+   */
   export let action = "See me for help";
   export let image = defaultImage;
   export let icon = defaultIcon;
@@ -28,9 +31,9 @@
     </div>
     <div class="action">
       <slot name="action">{action}</slot>
-      <div class="arrow">
+      <!-- <div class="arrow">
         {@html arrowIcon}
-      </div>
+      </div> -->
     </div>
   </div>
 </article>

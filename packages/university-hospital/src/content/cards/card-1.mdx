@@ -1,12 +1,20 @@
 ---
-title: 'Care designed just for you.'
+title: 'Need a wheelchair or interpreter?'
 ---
 
 import img from '$assets/images/campaign-style-back.png';
 import img2 from '$assets/images/campaign-style-front.png';
-import ico from '$assets/icon_info.svg?raw';
+import ico1 from '$assets/icon_info.svg?raw';
+import ico2 from '$assets/icon_wheelchair.svg?raw';
+import ico3 from '$assets/icon_interpret.svg?raw';
 
-export const title = 'Care designed just for you.';
-export const subhead = 'Atención diseñada solo para ti.';
+export const title = 'Need a wheelchair or interpreter?';
+export const subhead = '¿Necesita ayuda?';
 export const image = [ img, img2 ];
-export const icon = ico;
+export const icon = ico1;
+
+<div class="icons">
+  <Fragment set:html={ico1} />
+  <Fragment set:html={ico2} />
+  <Fragment set:html={ico3} />
+</div>

@@ -5,34 +5,45 @@
   import defaultIcon from '$assets/icon_translate.svg?raw';
   import arrowIcon from '$assets/gfx_arrow.svg?raw';
 
+  export let body = '';
   export let title = "Need a helper?";
   export let subhead = "";
+  /** @type {Boolean|String} */
   export let action = "See me for help";
   export let image = defaultImage;
   export let icon = defaultIcon;
   export let overflow = true;
+
+  console.log(body);
 </script>
 
 <article class:card--frame-break={overflow}>
 
   <CardImage {overflow} images={image} />
 
-  <div class="body">
+  <div class="main">
     <h2>
       <slot name="title">{title}</slot>
     </h2>
     <div class="subhead">
       <slot name="subhead">{subhead}</slot>
     </div>
-    <div class="action">
-      <div class="icon-wrap">
-        {@html icon}
+    {#if body}
+      <div class="body">
+        <slot name="body">{@html body}</slot>
       </div>
-      <slot name="action">{action}</slot>
-      <div class="arrow">
-        {@html arrowIcon}
+    {/if}
+    {#if action}
+      <div class="action">
+        <div class="icon-wrap">
+          {@html icon}
+        </div>
+        <slot name="action">
+          {action}
+          <div class="arrow">{@html arrowIcon}</div>
+        </slot>
       </div>
-    </div>
+    {/if}
   </div>
 </article>
 
@@ -64,6 +75,18 @@
     position: relative;
   }
 
+  .main {
+    padding: space(4);
+    padding-top: space(2);
+    padding-bottom: space(3.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    color: var(--color-blue-60);
+    font-size: type(2);
+  }
+
   .action {
     margin-top: auto;
     display: flex;
@@ -75,18 +98,6 @@
     margin-left: auto;
     transform: rotate(90deg);
     fill: var(--color-blue-60);
-  }
-
-  .body {
-    padding: space(4);
-    padding-top: space(2);
-    padding-bottom: space(3.5);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex-grow: 1;
-    color: var(--color-blue-60);
-    font-size: type(2);
   }
 
   .icon-wrap {

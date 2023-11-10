@@ -35,7 +35,7 @@
       </div>
 
       <div class="map-column">
-        <h2>Self-service<br>information</h2>
+        <h2>How can we<br>help you?</h2>
 
         <div class="map-grid">
 

@@ -7,14 +7,13 @@
 
   export let body = '';
   export let title = "Need a helper?";
+  export let secondaryTitle = "";
   export let subhead = "";
   /** @type {Boolean|String} */
   export let action = "See me for help";
   export let image = defaultImage;
   export let icon = defaultIcon;
-  export let overflow = true;
-
-  console.log(body);
+  export let overflow = false;
 </script>
 
 <article class:card--frame-break={overflow}>
@@ -25,6 +24,9 @@
     <h2>
       <slot name="title">{title}</slot>
     </h2>
+    <div class="secondary-title">
+      <slot name="secondary-title">{secondaryTitle}</slot>
+    </div>
     <div class="subhead">
       <slot name="subhead">{subhead}</slot>
     </div>
@@ -40,8 +42,8 @@
         </div>
         <slot name="action">
           {action}
-          <div class="arrow">{@html arrowIcon}</div>
         </slot>
+        <div class="arrow">{@html arrowIcon}</div>
       </div>
     {/if}
   </div>
@@ -65,9 +67,9 @@
   }
 
   h2 {
-    font-size: type(6.5);
+    font-size: type(6);
     line-height: space(5.5);
-    margin-top: space(3);
+    margin-top: space(1);
     margin-bottom: space(2);
     font-family: bennet-banner;
     font-weight: 900;
@@ -75,8 +77,16 @@
     position: relative;
   }
 
+  .secondary-title {
+    font-size: type(3);
+    color: var(--color-blue-70);
+    font-weight: 700;
+    margin-top: space(-1);
+    margin-bottom: auto;
+  }
+
   .main {
-    padding: space(4);
+    padding: space(3);
     padding-top: space(2);
     padding-bottom: space(3.5);
     display: flex;
@@ -111,5 +121,32 @@
 
   .icon-wrap :global(svg) {
     fill: var(--color-blue-60);
+  }
+
+  .main {
+    :global(.icons) {
+      display: flex;
+      fill: var(--color-blue-60);
+      justify-content: space-between;
+      margin-bottom: space(-1.5);
+      padding-top: space(2);
+    }
+
+    :global(.icons svg) {
+      flex: 0 0 space(8);
+    }
+
+    :global(.qr-container) {
+      display: flex;
+      align-items: flex-end;
+      gap: space(1);
+    }
+
+    :global(.qr-container img) {
+      width: space(15);
+      height: space(15);
+      margin-bottom: space(-3);
+      margin-right: space(-2);
+    }
   }
 </style>

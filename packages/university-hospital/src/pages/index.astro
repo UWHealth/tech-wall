@@ -5,8 +5,7 @@ import Greeting2 from '$components/Greeting2.svelte';
 import CardList from '$components/CardList.svelte';
 import Card from '$components/CardAdvert.svelte';
 import SelfService from '$components/SelfService.svelte';
-import { getEntry, type CollectionEntry, type Render } from 'astro:content';
-// import type { ContentEntryModule, MDXInstance } from "astro";
+import { getEntry, type CollectionEntry } from 'astro:content';
 
 // import video from 'https://bynder.uwhealth.org/m/1b36dd22807177c4/original/Tech-Wall-Lake.mp4';
 // const video = await fetch('/video.mp4');
@@ -46,9 +45,10 @@ let qrCodes = [
         <Greeting2 {...greeting} />
 
         <CardList class='card-list'>
-          {cards.map(({ title, subhead, image, icon, Content }) => (
+          {cards.map(({ title, secondaryTitle, subhead, image, icon, Content }) => (
             <Card subhead={subhead} image={image} icon={icon} action={false} body={true}>
               <Fragment slot="title">{title}</Fragment>
+              <Fragment slot="secondary-title">{secondaryTitle}</Fragment>
               <Fragment slot="body"><Content/></Fragment>
             </Card>
           ))}

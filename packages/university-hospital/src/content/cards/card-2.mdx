@@ -1,11 +1,17 @@
 ---
-title: 'Need a wheelchair?'
+title: 'Honor and remember your loved ones'
 ---
 
-import img from '$assets/images/campaign-wheelchair.png';
+import img from '$assets/images/ll-graphic.png';
+import qrCode from '$assets/images/qr-code-ll.png';
 import ico from '$assets/icon_wheelchair.svg?raw';
 
-export const title = 'Need a wheelchair?';
-export const subhead = '¿Necesita una silla de ruedas?';
+export const title = 'Honor and remember your loved ones.';
+export const subhead = '';
 export const image = img;
 export const icon = ico;
+
+<div class="qr-container">
+  <div class="qr-container__text">Honra y recuerda a tus seres queridos.</div>
+  <img class="qr-container__img" src={qrCode.src} alt=""/>
+</div>

@@ -71,9 +71,8 @@ let qrCodes = [
 
 
     window.onload = async () => {
-      // const response = await fetch("/video.mp4");
       const video = document.getElementById('video');
-      if (video.paused) video.play();
+      if (video && video.paused) video.play();
       setTimeout(()=> { prepareReload() }, (RELOAD_TIMER - 2000));
       setTimeout(()=> { location.reload() }, RELOAD_TIMER);
     }
@@ -137,13 +136,16 @@ let qrCodes = [
   }
 
   .base-grid {
-    height: 100%;
+    aspect-ratio: var(--aspect-ratio);
+    max-width: 100%;
+    overflow: hidden;
   }
 
   :global(.card-list) {
     grid-column: span 3;
     position: relative;
     z-index: 3;
+    max-height: 100%; /* ensure weird card content doesn't ruin the layout */
   }
 
   .skrim {
@@ -152,7 +154,7 @@ let qrCodes = [
     left: 0; top: 0; bottom: 0; right: 0;
     /* background-image: linear-gradient(210deg,rgb(34 195 255 / 0%) 65%,rgba(84, 35, 78, 0.75));
     mix-blend-mode: multiply; */
-    background-image: linear-gradient(210deg,rgba(44, 9, 126, 0.02) 55%,rgba(47, 24, 3, 0.5));
+    background-image: linear-gradient(210deg,rgba(44, 9, 126, 0.02) 55%,rgb(11 42 77 / 10%));
     mix-blend-mode: multiply;
     /* background-image:
       linear-gradient(210deg, white, black),

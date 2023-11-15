@@ -46,7 +46,7 @@ let qrCodes = [
 
         <CardList class='card-list'>
           {cards.map(({ title, secondaryTitle, subhead, image, icon, Content }) => (
-            <Card subhead={subhead} image={image} icon={icon} action={false} body={true}>
+            <Card subhead={subhead} image={image} icon={icon}>
               <Fragment slot="title">{title}</Fragment>
               <Fragment slot="secondary-title">{secondaryTitle}</Fragment>
               <Fragment slot="body"><Content/></Fragment>

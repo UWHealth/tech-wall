@@ -12,5 +12,5 @@ syncAsset(
 
 writeContentfulData(
   path.resolve(__dirname, '../src/content/layout/base.json'),
-  JSON.stringify({ video: '/public/remote-assets/Tech-Wall-Lake.mp4' }, null, 0) // TODO: will be replaced with `contentfulData`
+  JSON.stringify({ video: '/public/remote-assets/video-background.mp4' }, null, 0) // TODO: will be replaced with `contentfulData`
 );

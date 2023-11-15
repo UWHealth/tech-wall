@@ -30,12 +30,12 @@
     <div class="subhead">
       <slot name="subhead">{subhead}</slot>
     </div>
-    {#if body}
+    {#if $$slots.body || body}
       <div class="body">
         <slot name="body">{@html body}</slot>
       </div>
     {/if}
-    {#if action}
+    {#if $$slots.action || action}
       <div class="action">
         <div class="icon-wrap">
           {@html icon}

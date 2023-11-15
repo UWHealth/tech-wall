@@ -10,7 +10,7 @@
   export let secondaryTitle = "";
   export let subhead = "";
   /** @type {Boolean|String} */
-  export let action = "See me for help";
+  export let action = "";
   export let image = defaultImage;
   export let icon = defaultIcon;
   export let overflow = false;
@@ -36,6 +36,7 @@
       </div>
     {/if}
     {#if $$slots.action || action}
+    {@debug $$slots}
       <div class="action">
         <div class="icon-wrap">
           {@html icon}

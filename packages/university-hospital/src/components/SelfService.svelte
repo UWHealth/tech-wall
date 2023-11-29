@@ -10,7 +10,7 @@
   export let amenities = [
     { title: 'Dining', body: 'Full-service Four Lakes Café and “grab and go” Mendota Market are located down one floor' },
     { title: 'Gift shop', body: 'Just a short walk from here, you’ll find gift options for patients of all ages' },
-    { title: 'Free Wi-Fi', body: 'Look for “Free Wi-Fi UW Health” on your device' },
+    { title: 'Free Wi-Fi', body: 'Look for “UW Health Guest” on your device' },
     { title: 'Healing gardens & patios', body: 'Relax with family and friends in a soothing outdoor setting' }
   ];
 </script>
